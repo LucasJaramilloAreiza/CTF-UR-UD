@@ -1,0 +1,226 @@
+import { Challenge, Hint } from '../types';
+
+export const mockChallenges: Challenge[] = [
+  {
+    id: 'c-web-1',
+    title: 'Inspector Gadget',
+    category: 'Web',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: 'A veces, la respuesta está oculta a plena vista. Revisa el código fuente de la página de inicio.\n\n`http://ctf.ieee.org:8080/inspector`',
+    files: [],
+    links: ['http://ctf.ieee.org:8080/inspector'],
+    flag: 'flag{1nspect0r_g4dg3t}',
+    state: 'active'
+  },
+  {
+    id: 'c-web-2',
+    title: 'Cookie Monster',
+    category: 'Web',
+    difficulty: 'Medium',
+    basePoints: 250,
+    description: 'He encontrado esta galleta misteriosa en mi navegador, pero dice "admin=false". ¿Qué pasaría si la cambio?\n\n`http://ctf.ieee.org:8080/cookies`',
+    files: [],
+    links: ['http://ctf.ieee.org:8080/cookies'],
+    flag: 'flag{c00ki3_m0nst3r_h4ck}',
+    state: 'active'
+  },
+  {
+    id: 'c-web-3',
+    title: 'SQL Injection 101',
+    category: 'Web',
+    difficulty: 'Hard',
+    basePoints: 500,
+    description: 'El clásico error de novato. Intenta saltarte el login de administrador.\n\n`http://ctf.ieee.org:8080/login`',
+    files: [],
+    links: ['http://ctf.ieee.org:8080/login'],
+    flag: 'flag{sql_1nj3ct10n_m4st3r}',
+    state: 'active'
+  },
+  {
+    id: 'c-pwn-1',
+    title: 'Buffer Overflow',
+    category: 'Pwn',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: 'Sobrescribe la variable para saltar a la función secreta.\n\nConéctate al puerto 1337.',
+    files: [{ name: 'bof.c', url: '#' }, { name: 'bof', url: '#' }],
+    links: ['nc ctf.ieee.org 1337'],
+    flag: 'flag{b0f_b4s1cs}',
+    state: 'active'
+  },
+  {
+    id: 'c-pwn-2',
+    title: 'Format String',
+    category: 'Pwn',
+    difficulty: 'Medium',
+    basePoints: 250,
+    description: 'El uso incorrecto de `printf` puede filtrar datos de la pila.',
+    files: [{ name: 'fmt.c', url: '#' }, { name: 'fmt', url: '#' }],
+    links: ['nc ctf.ieee.org 1338'],
+    flag: 'flag{fmt_str1ng_l34k}',
+    state: 'active'
+  },
+  {
+    id: 'c-pwn-3',
+    title: 'ROP Chain',
+    category: 'Pwn',
+    difficulty: 'Hard',
+    basePoints: 500,
+    description: 'No hay función secreta a la que saltar. Tendrás que armar tu propio shellcode usando ROP.',
+    files: [{ name: 'rop', url: '#' }],
+    links: ['nc ctf.ieee.org 1339'],
+    flag: 'flag{r0p_ch41n_m4g1c}',
+    state: 'active'
+  },
+  {
+    id: 'c-cry-1',
+    title: 'Caesar Salad',
+    category: 'Crypto',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: 'Julio César usaba este método para sus mensajes secretos.\n\nTexto cifrado: `synt{p43f4e_f4y4q}` (Rotación: 13)',
+    files: [],
+    links: [],
+    flag: 'flag{c43s4r_s4l4d}',
+    state: 'active'
+  },
+  {
+    id: 'c-cry-2',
+    title: 'Base64, Base32, Hex...',
+    category: 'Crypto',
+    difficulty: 'Medium',
+    basePoints: 250,
+    description: 'Este mensaje ha pasado por múltiples codificaciones. Desanda el camino.\n\n`4a4778685a33746d59584e304f6e4a316333526a6247397a5a584a6663473130637a303d` (Aviso: primero hex, luego b64...)',
+    files: [],
+    links: [],
+    flag: 'flag{rust_rust_rust}',
+    state: 'active' // just a mock flag
+  },
+  {
+    id: 'c-cry-3',
+    title: 'RSA Factorization',
+    category: 'Crypto',
+    difficulty: 'Hard',
+    basePoints: 500,
+    description: 'N es pequeño. Demasiado pequeño. ¿Puedes factorizarlo para encontrar d y descifrar el mensaje?',
+    files: [{ name: 'pubkey.pem', url: '#' }, { name: 'ciphertext.txt', url: '#' }],
+    links: [],
+    flag: 'flag{rs4_f4ct0r1z4t10n_3z}',
+    state: 'active'
+  },
+  {
+    id: 'c-rev-1',
+    title: 'Strings',
+    category: 'Rev',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: 'A veces, la flag está guardada directamente en el binario. ¿Conoces el comando `strings`?',
+    files: [{ name: 'binary_easy', url: '#' }],
+    links: [],
+    flag: 'flag{str1ngs_4r3_c00l}',
+    state: 'active'
+  },
+  {
+    id: 'c-rev-2',
+    title: 'Ghidra is your friend',
+    category: 'Rev',
+    difficulty: 'Medium',
+    basePoints: 250,
+    description: 'La flag se construye dinámicamente en memoria. Tendrás que decompilar y analizar el flujo de ejecución.',
+    files: [{ name: 'binary_med', url: '#' }],
+    links: [],
+    flag: 'flag{gh1dr4_m4g1c}',
+    state: 'active'
+  },
+  {
+    id: 'c-rev-3',
+    title: 'Anti-Debug',
+    category: 'Rev',
+    difficulty: 'Hard',
+    basePoints: 500,
+    description: 'Este binario detecta si lo estás depurando y cambia su comportamiento. Saltate las comprobaciones.',
+    files: [{ name: 'binary_hard', url: '#' }],
+    links: [],
+    flag: 'flag{4nt1_d3bug_byp4ss}',
+    state: 'active'
+  },
+  {
+    id: 'c-for-1',
+    title: 'ExifData',
+    category: 'Forensics',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: 'Las fotos guardan más información de la que muestran. Revisa los metadatos de esta imagen.',
+    files: [{ name: 'image.jpg', url: '#' }],
+    links: [],
+    flag: 'flag{3x1f_m3t4d4t4}',
+    state: 'active'
+  },
+  {
+    id: 'c-for-2',
+    title: 'WireShark',
+    category: 'Forensics',
+    difficulty: 'Medium',
+    basePoints: 250,
+    description: 'He interceptado esta captura de red. Encuentra la contraseña que se envió en texto claro por FTP.',
+    files: [{ name: 'capture.pcap', url: '#' }],
+    links: [],
+    flag: 'flag{ftp_cl34rt3xt_l34k}',
+    state: 'active'
+  },
+  {
+    id: 'c-for-3',
+    title: 'Steganography',
+    category: 'Forensics',
+    difficulty: 'Hard',
+    basePoints: 500,
+    description: 'Hay un archivo ZIP oculto dentro de esta imagen PNG. Extraélo.',
+    files: [{ name: 'hidden.png', url: '#' }],
+    links: [],
+    flag: 'flag{st3g4n0gr4phy_1s_4rt}',
+    state: 'active'
+  },
+  {
+    id: 'c-misc-1',
+    title: 'Discord Bot',
+    category: 'Misc',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: 'Pregúntale amablemente al bot del servidor de Discord de la plataforma por la flag.',
+    files: [],
+    links: ['https://discord.gg/ejemplo'],
+    flag: 'flag{b0ts_4r3_fr13nds}',
+    state: 'active'
+  },
+  {
+    id: 'c-misc-2',
+    title: 'Regex Golf',
+    category: 'Misc',
+    difficulty: 'Medium',
+    basePoints: 250,
+    description: 'Crea una expresión regular que coincida con todas las palabras de la izquierda y ninguna de la derecha.',
+    files: [],
+    links: ['http://ctf.ieee.org:8081/regex'],
+    flag: 'flag{r3g3x_g0lf_m4st3r}',
+    state: 'active'
+  },
+  {
+    id: 'c-misc-3',
+    title: 'Sanity Check',
+    category: 'Misc',
+    difficulty: 'Easy',
+    basePoints: 100,
+    description: '¡Bienvenido al CTF! Asegúrate de que sabes cómo enviar flags. \n\nLa flag es `flag{w3lc0m3_t0_ctf}`.',
+    files: [],
+    links: [],
+    flag: 'flag{w3lc0m3_t0_ctf}',
+    state: 'active'
+  }
+];
+
+export const mockHints: Hint[] = [
+  { id: 'h-web1-1', challengeId: 'c-web-1', content: 'Fíjate en los comentarios HTML (<!-- -->)', pointCost: 10 },
+  { id: 'h-cry1-1', challengeId: 'c-cry-1', content: 'Busca un decodificador ROT13 online.', pointCost: 15 },
+  { id: 'h-pwn1-1', challengeId: 'c-pwn-1', content: 'Usa `python -c "print(\'A\'*64 + \'\\xef\\xbe\\xad\\xde\')"`', pointCost: 50 },
+];
