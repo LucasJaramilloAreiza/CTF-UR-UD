@@ -48,8 +48,7 @@ export default function ChallengeFormModal({ isOpen, onClose, initialData }: Cha
     if (initialData && formData.id) {
       updateChallenge(formData as Challenge);
     } else {
-      const newId = formData.category.toLowerCase().split(' ')[0] + '-' + formData.difficulty.toLowerCase() + '-' + Math.floor(Math.random() * 1000);
-      addChallenge({ ...formData, id: newId } as Challenge);
+      addChallenge(formData);
     }
     
     onClose();

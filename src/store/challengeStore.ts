@@ -260,6 +260,8 @@ export const useChallengeStore = create<CTFStore>()(
         const { data, error } = await supabase.from('challenges').insert([dbChallenge]).select().single();
         if (data && !error) {
           set((state) => ({ challenges: [...state.challenges, { ...data, hints: [], files: [], links: [] } as Challenge] }));
+        } else if (error) {
+          console.error("Supabase Error (addChallenge):", error.message, error.details, error.code, error);
         }
       },
       
@@ -270,6 +272,8 @@ export const useChallengeStore = create<CTFStore>()(
           set((state) => ({
             challenges: state.challenges.map((c) => (c.id === updatedChallenge.id ? { ...data, hints: c.hints, files: c.files, links: c.links } as Challenge : c)),
           }));
+        } else if (error) {
+          console.error("Supabase Error (updateChallenge):", error.message, error.details, error.code, error);
         }
       },
       
