@@ -80,6 +80,13 @@ export const useChallengeStore = create<CTFStore>()(
       },
 
       subscribeToRealtime: () => {
+        // Clean up any existing channels to prevent multiple subscriptions/callbacks error
+        supabase.getChannels().forEach(channel => {
+          if (channel.topic === 'realtime:public:team_solves') {
+            supabase.removeChannel(channel);
+          }
+        });
+
         supabase
           .channel('public:team_solves')
           .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'team_solves' }, (payload) => {
