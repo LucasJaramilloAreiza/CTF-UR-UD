@@ -285,8 +285,16 @@ export const useChallengeStore = create<CTFStore>()(
       },
       
       setCompetitionStatus: async (status) => {
-        await supabase.from('competition_state').update({ status }).eq('id', 'global-or-first-row-handled-by-api');
-        set({ competitionStatus: status });
+        // Fetch the unique ID of our single competition_state row
+        const { data } = await supabase.from('competition_state').select('id').limit(1).single();
+        if (data) {
+          const { error } = await supabase.from('competition_state').update({ status }).eq('id', data.id);
+          if (!error) {
+            set({ competitionStatus: status });
+          } else {
+            console.error("Supabase Error (setCompetitionStatus):", error);
+          }
+        }
       },
       
       elevateToAdmin: async () => {
