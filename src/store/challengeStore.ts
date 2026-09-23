@@ -249,17 +249,19 @@ export const useChallengeStore = create<CTFStore>()(
       },
       
       addChallenge: async (challenge) => {
-        const { data, error } = await supabase.from('challenges').insert([challenge]).select().single();
+        const { hints, files, links, ...dbChallenge } = challenge;
+        const { data, error } = await supabase.from('challenges').insert([dbChallenge]).select().single();
         if (data && !error) {
-          set((state) => ({ challenges: [...state.challenges, data as Challenge] }));
+          set((state) => ({ challenges: [...state.challenges, { ...data, hints: [], files: [], links: [] } as Challenge] }));
         }
       },
       
       updateChallenge: async (updatedChallenge) => {
-        const { data, error } = await supabase.from('challenges').update(updatedChallenge).eq('id', updatedChallenge.id).select().single();
+        const { hints, files, links, ...dbChallenge } = updatedChallenge;
+        const { data, error } = await supabase.from('challenges').update(dbChallenge).eq('id', updatedChallenge.id).select().single();
         if (data && !error) {
           set((state) => ({
-            challenges: state.challenges.map((c) => (c.id === updatedChallenge.id ? data as Challenge : c)),
+            challenges: state.challenges.map((c) => (c.id === updatedChallenge.id ? { ...data, hints: c.hints, files: c.files, links: c.links } as Challenge : c)),
           }));
         }
       },
