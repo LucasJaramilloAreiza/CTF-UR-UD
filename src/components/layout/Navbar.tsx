@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Shield, LayoutDashboard, Terminal, Trophy, Settings, LogIn, LogOut } from 'lucide-react';
@@ -11,6 +12,13 @@ export default function Navbar() {
   const pathname = usePathname();
   const currentTeam = useChallengeStore((state) => state.currentTeam);
   const currentUser = useChallengeStore((state) => state.currentUser);
+  const initData = useChallengeStore((state) => state.initData);
+  const subscribeToRealtime = useChallengeStore((state) => state.subscribeToRealtime);
+
+  useEffect(() => {
+    initData();
+    subscribeToRealtime();
+  }, [initData, subscribeToRealtime]);
 
   const navItems = [
     { href: '/', label: 'Briefing', icon: Shield },

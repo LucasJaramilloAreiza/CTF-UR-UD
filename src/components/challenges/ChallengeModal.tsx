@@ -35,7 +35,7 @@ export default function ChallengeModal({ challenge, isOpen, onClose }: Challenge
 
   const points = DIFFICULTY_POINTS[challenge.difficulty];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!flagInput.trim()) return;
     
@@ -45,7 +45,7 @@ export default function ChallengeModal({ challenge, isOpen, onClose }: Challenge
       return;
     }
     
-    const success = submitFlag(challenge.id, flagInput.trim());
+    const success = await submitFlag(challenge.id, flagInput.trim());
     setSubmitStatus(success ? 'success' : 'error');
     if (!success) {
       setTimeout(() => setSubmitStatus('idle'), 3000);

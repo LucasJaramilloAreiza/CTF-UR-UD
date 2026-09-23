@@ -29,25 +29,25 @@ export default function AuthPage() {
 
   const [error, setError] = useState('');
 
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
-    loginUser(name, email);
+    await loginUser(name, email);
   };
 
-  const handleCreateTeam = (e: React.FormEvent) => {
+  const handleCreateTeam = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!teamName.trim()) return;
-    const code = createTeam(teamName);
+    const code = await createTeam(teamName);
     if (code) {
       router.push('/dashboard');
     }
   };
 
-  const handleJoinTeam = (e: React.FormEvent) => {
+  const handleJoinTeam = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!teamCode.trim()) return;
-    const response = joinTeam(teamCode);
+    const response = await joinTeam(teamCode);
     if (response.success) {
       router.push('/dashboard');
     } else {

@@ -31,26 +31,26 @@ export default function OnboardingPage() {
     return null; // or loading spinner
   }
 
-  const handleCreateTeam = (e: React.FormEvent) => {
+  const handleCreateTeam = async (e: React.FormEvent) => {
     e.preventDefault();
     if (teamName.length < 3) {
       toast.error('El nombre del equipo debe tener al menos 3 caracteres');
       return;
     }
-    const code = createTeam(teamName);
+    const code = await createTeam(teamName);
     if (code) {
       toast.success('Equipo creado con éxito. ¡Bienvenido líder!');
       router.push('/dashboard');
     }
   };
 
-  const handleJoinTeam = (e: React.FormEvent) => {
+  const handleJoinTeam = async (e: React.FormEvent) => {
     e.preventDefault();
     if (inviteCode.length !== 6) {
       toast.error('El código de invitación debe tener 6 caracteres');
       return;
     }
-    const response = joinTeam(inviteCode);
+    const response = await joinTeam(inviteCode);
     if (response.success) {
       toast.success('Te has unido al equipo correctamente');
       router.push('/dashboard');
