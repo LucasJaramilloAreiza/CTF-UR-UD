@@ -82,7 +82,7 @@ export const useChallengeStore = create<CTFStore>()(
       subscribeToRealtime: () => {
         // Clean up any existing channels to prevent multiple subscriptions/callbacks error
         supabase.getChannels().forEach(channel => {
-          if (channel.topic === 'realtime:public:team_solves') {
+          if (channel.topic === 'realtime:public:team_solves' || channel.topic === 'realtime:public:competition_state') {
             supabase.removeChannel(channel);
           }
         });
@@ -107,6 +107,14 @@ export const useChallengeStore = create<CTFStore>()(
                 }]
               };
             });
+          })
+          .subscribe();
+
+        supabase
+          .channel('public:competition_state')
+          .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'competition_state' }, (payload) => {
+            const newState = payload.new as any;
+            set({ competitionStatus: newState.status as CompetitionStatus });
           })
           .subscribe();
       },
