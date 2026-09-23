@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useCTFStore } from '@/store/useCTFStore';
+import { useChallengeStore } from '@/store/challengeStore';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
@@ -11,7 +11,9 @@ import { toast } from 'sonner';
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const { currentUser, createTeam, joinTeam } = useCTFStore();
+  const currentUser = useChallengeStore(state => state.currentUser);
+  const createTeam = useChallengeStore(state => state.createTeam);
+  const joinTeam = useChallengeStore(state => state.joinTeam);
   
   const [teamName, setTeamName] = useState('');
   const [affiliation, setAffiliation] = useState<'IEEE UD' | 'IEEE Rosario' | 'Otro'>('IEEE UD');
@@ -35,9 +37,11 @@ export default function OnboardingPage() {
       toast.error('El nombre del equipo debe tener al menos 3 caracteres');
       return;
     }
-    createTeam(teamName, affiliation);
-    toast.success('Equipo creado con éxito. ¡Bienvenido líder!');
-    router.push('/dashboard');
+    const code = createTeam(teamName);
+    if (code) {
+      toast.success('Equipo creado con éxito. ¡Bienvenido líder!');
+      router.push('/dashboard');
+    }
   };
 
   const handleJoinTeam = (e: React.FormEvent) => {
@@ -46,9 +50,13 @@ export default function OnboardingPage() {
       toast.error('El código de invitación debe tener 6 caracteres');
       return;
     }
-    joinTeam(inviteCode);
-    toast.success('Te has unido al equipo correctamente');
-    router.push('/dashboard');
+    const response = joinTeam(inviteCode);
+    if (response.success) {
+      toast.success('Te has unido al equipo correctamente');
+      router.push('/dashboard');
+    } else {
+      toast.error(response.error || 'Código de equipo inválido');
+    }
   };
 
   return (

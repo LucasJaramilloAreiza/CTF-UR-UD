@@ -1,0 +1,48 @@
+src/app/admin/page.tsx(337,9): error TS2322: Type '{ isOpen: boolean; onClose: () => void; challengeToEdit: Challenge | undefined; }' is not assignable to type 'IntrinsicAttributes & ChallengeFormModalProps'.
+  Property 'challengeToEdit' does not exist on type 'IntrinsicAttributes & ChallengeFormModalProps'.
+src/app/onboarding/page.tsx(10,23): error TS2307: Cannot find module 'sonner' or its corresponding type declarations.
+src/components/ui/sonner.tsx(3,26): error TS2307: Cannot find module 'next-themes' or its corresponding type declarations.
+src/components/ui/sonner.tsx(4,54): error TS2307: Cannot find module 'sonner' or its corresponding type declarations.
+src/data/mockData.ts(1,21): error TS2305: Module '"../types"' has no exported member 'Hint'.
+src/data/mockData.ts(12,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(24,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(36,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(47,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(47,42): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(48,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(59,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(59,42): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(60,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(71,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(72,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(79,5): error TS2322: Type '"Crypto"' is not assignable to type 'ChallengeCategory'.
+src/data/mockData.ts(91,5): error TS2322: Type '"Crypto"' is not assignable to type 'ChallengeCategory'.
+src/data/mockData.ts(103,5): error TS2322: Type '"Crypto"' is not assignable to type 'ChallengeCategory'.
+src/data/mockData.ts(107,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(107,47): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(115,5): error TS2322: Type '"Rev"' is not assignable to type 'ChallengeCategory'.
+src/data/mockData.ts(119,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(127,5): error TS2322: Type '"Rev"' is not assignable to type 'ChallengeCategory'.
+src/data/mockData.ts(131,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(139,5): error TS2322: Type '"Rev"' is not assignable to type 'ChallengeCategory'.
+src/data/mockData.ts(143,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(155,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(167,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(179,13): error TS2741: Property 'size' is missing in type '{ name: string; url: string; }' but required in type 'ChallengeFile'.
+src/data/mockData.ts(192,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(204,13): error TS2322: Type 'string' is not assignable to type 'ChallengeLink'.
+src/data/mockData.ts(213,5): error TS2353: Object literal may only specify known properties, and 'basePoints' does not exist in type 'Challenge'.
+src/store/useCTFStore.ts(3,33): error TS2305: Module '"../types"' has no exported member 'Hint'.
+src/store/useCTFStore.ts(18,48): error TS2339: Property 'affiliation' does not exist on type 'Team'.
+src/store/useCTFStore.ts(60,13): error TS2322: Type '"member"' is not assignable to type '"user" | "admin" | undefined'.
+src/store/useCTFStore.ts(75,11): error TS2353: Object literal may only specify known properties, and 'affiliation' does not exist in type 'Team'.
+src/store/useCTFStore.ts(82,13): error TS2345: Argument of type '(state: CTFState) => { teams: Team[]; currentUser: { teamId: string; role: "leader"; id: string; name: string; email?: string | undefined; }; users: (User | { teamId: string; role: "leader"; id: string; name: string; email?: string | undefined; })[]; }' is not assignable to parameter of type 'CTFState | Partial<CTFState> | ((state: CTFState) => CTFState | Partial<CTFState>)'.
+  Type '(state: CTFState) => { teams: Team[]; currentUser: { teamId: string; role: "leader"; id: string; name: string; email?: string | undefined; }; users: (User | { teamId: string; role: "leader"; id: string; name: string; email?: string | undefined; })[]; }' is not assignable to type '(state: CTFState) => CTFState | Partial<CTFState>'.
+    Type '{ teams: Team[]; currentUser: { teamId: string; role: "leader"; id: string; name: string; email?: string; }; users: (User | { teamId: string; role: "leader"; id: string; name: string; email?: string; })[]; }' is not assignable to type 'CTFState | Partial<CTFState>'.
+      Type '{ teams: Team[]; currentUser: { teamId: string; role: "leader"; id: string; name: string; email?: string; }; users: (User | { teamId: string; role: "leader"; id: string; name: string; email?: string; })[]; }' is not assignable to type 'Partial<CTFState>'.
+        The types of 'currentUser.role' are incompatible between these types.
+          Type '"leader"' is not assignable to type '"user" | "admin" | undefined'.
+src/store/useCTFStore.ts(93,42): error TS2339: Property 'inviteCode' does not exist on type 'Team'.
+src/store/useCTFStore.ts(129,13): error TS2353: Object literal may only specify known properties, and 'userId' does not exist in type 'TeamSolve'.
+src/store/useCTFStore.ts(149,17): error TS2739: Type '{ teamId: string; hintId: string; timestamp: number; }' is missing the following properties from type 'TeamHintUnlock': challengeId, cost
+src/store/useCTFStore.ts(181,45): error TS2339: Property 'basePoints' does not exist on type 'Challenge'.

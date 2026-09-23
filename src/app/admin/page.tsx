@@ -334,7 +334,7 @@ export default function AdminPage() {
       <ChallengeFormModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        challengeToEdit={editingChallenge || undefined}
+        initialData={editingChallenge || null}
       />
     </div>
   );
